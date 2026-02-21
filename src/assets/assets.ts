@@ -8,9 +8,11 @@ import Shoes from "./SHOES.svg"
 import reviewshoes1 from "./reviewshoe1.png"
 import reviewshoes2 from "./reviewshoe2.png"
 import reviewshoes3 from "./reviewshoe3.png"
+import Logoo from "./Logoo.svg"
 
 export const assets = {
   Logo,
+  Logoo,
   Category1,
   Category2,
   HeroImg1,
