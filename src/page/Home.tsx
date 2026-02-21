@@ -8,7 +8,6 @@ const Home = () => {
 
   return (
     <section className="w-full mt-6 space-y-6">
-
       {/* TITLE */}
       <h1 className="text-[51px] md:text-[120px] lg:text-[223px] font-black uppercase leading-[0.95] ">
         <span className="text-black">DO IT </span>
@@ -17,7 +16,6 @@ const Home = () => {
 
       {/* HERO CARD */}
       <div className="relative mx-4 rounded-3xl overflow-hidden">
-
         {/* Image Wrapper */}
         <div className="relative aspect-[4/5] sm:aspect-[16/9]">
           <img
@@ -70,6 +68,17 @@ const Home = () => {
             ))}
           </div>
         </div>
+      </div>
+
+      {/* Review Section */}
+      <div className="flex items-center justify-between gap-3">
+        <h2 className="text-3xl md:text-6xl uppercase font-bold flex-1 min-w-0">
+          Reviews
+        </h2>
+
+        <Button variant="primary" size="md" className="shrink-0">
+          Shop Now
+        </Button>
       </div>
     </section>
   );
