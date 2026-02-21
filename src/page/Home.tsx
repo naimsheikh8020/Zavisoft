@@ -27,7 +27,7 @@ const Home = () => {
           />
 
           {/* Dark Overlay */}
-          <div className="relative inset-0 bg-black/20" />
+          <div className="absolute  inset-0 bg-black/20" />
 
           {/* Side Vertical Badge */}
           <div className="absolute left-[-50px] md:left-[-56px]  top-1/3 -translate-y-1/2 bg-black  text-white text-[10px] sm:text-xs px-2 py-3 rounded-r-lg rotate-[-90deg]">

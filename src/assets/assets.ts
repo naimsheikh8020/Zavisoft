@@ -9,6 +9,9 @@ import reviewshoes1 from "./reviewshoe1.png"
 import reviewshoes2 from "./reviewshoe2.png"
 import reviewshoes3 from "./reviewshoe3.png"
 import Logoo from "./Logoo.svg"
+import Avetar1 from "./Avetar1.png"
+import Avetar2 from "./Aveter2.png"
+import Avetar3 from "./Aveter3.png"
 
 export const assets = {
   Logo,
@@ -21,5 +24,8 @@ export const assets = {
   Shoes,
   reviewshoes1,
   reviewshoes2,
-  reviewshoes3
+  reviewshoes3,
+  Avetar1,
+  Avetar2,
+  Avetar3,
 }
