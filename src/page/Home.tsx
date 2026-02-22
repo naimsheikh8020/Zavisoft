@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { assets } from "../assets/assets";
+import { assets, reviews } from "../assets/assets";
 import Button from "../Components/Button";
+import ReviewCard from "../Components/ReviewCard";
 
 const Home = () => {
   const images = [assets.HeroImg1, assets.HeroImg2, assets.HeroImg3];
@@ -71,7 +72,8 @@ const Home = () => {
       </div>
 
       {/* Review Section */}
-      <div className="flex items-center justify-between gap-3">
+      <div>
+        <div className="flex items-center justify-between gap-3">
         <h2 className="text-3xl md:text-6xl uppercase font-bold flex-1 min-w-0">
           Reviews
         </h2>
@@ -79,6 +81,13 @@ const Home = () => {
         <Button variant="primary" size="md" className="shrink-0">
           Shop Now
         </Button>
+      </div>
+       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+      {reviews.map((review) => (
+        <ReviewCard key={review.id} {...review} />
+      ))}
+    </div>
+      
       </div>
     </section>
   );

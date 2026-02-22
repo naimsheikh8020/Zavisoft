@@ -12,6 +12,7 @@ import Logoo from "./Logoo.svg"
 import Avetar1 from "./Avetar1.png"
 import Avetar2 from "./Aveter2.png"
 import Avetar3 from "./Aveter3.png"
+import type { Review } from "../types/ReviewCardPropos"
 
 export const assets = {
   Logo,
@@ -29,3 +30,33 @@ export const assets = {
   Avetar2,
   Avetar3,
 }
+
+
+
+
+export const reviews: Review[] = [
+  {
+    id: 1,
+    title: "Good Quality",
+    description: "I highly recommend shopping from kicks",
+    rating: 5,
+    avatarUrl: Avetar1,
+    imageUrl: reviewshoes3,
+  },
+  {
+    id: 2,
+    title: "Good Quality",
+    description: "I highly recommend shopping from kicks",
+    rating: 5,
+    avatarUrl: Avetar2,
+    imageUrl: reviewshoes2,
+  },
+  {
+    id: 3,
+    title: "Good Quality",
+    description: "I highly recommend shopping from kicks",
+    rating: 5,
+    avatarUrl: Avetar3,
+    imageUrl: reviewshoes1,
+  },
+];
