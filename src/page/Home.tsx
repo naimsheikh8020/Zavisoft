@@ -3,6 +3,7 @@ import { assets, products, reviews } from "../assets/assets";
 import Button from "../Components/Button";
 import ReviewCard from "../Components/ReviewCard";
 import ProductCard from "../Components/ProductCard";
+import CategorySection from "../Components/CategorySection";
 
 const Home = () => {
   const images = [assets.HeroImg1, assets.HeroImg2, assets.HeroImg3];
@@ -92,7 +93,10 @@ const Home = () => {
             />
           ))}
 </div>
-  </div>
+      </div>
+
+      {/* Categroy Section */}
+      <CategorySection/>
 
       {/* Review Section */}
       <div>
