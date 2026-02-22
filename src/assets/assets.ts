@@ -20,6 +20,7 @@ import i from "./i.svg"
 import c from "./c.svg"
 import s from "./s.svg"
 import kicksfooterlog from "./kicksfooter.svg"
+import type { Product } from "../types/ProductType"
 export const assets = {
   Logo,
   Logoo,
@@ -71,5 +72,38 @@ export const reviews: Review[] = [
     rating: 5,
     avatarUrl: Avetar3,
     imageUrl: reviewshoes1,
+  },
+];
+
+
+
+export const products: Product[] = [
+  {
+    id: "adidas-4dfwd-parley-1",
+    badge: "New",
+    title: "ADIDAS 4DFWD X PARLEY RUNNING SHOES",
+    price: 125,
+    imageSrc: assets.Shoes,
+  },
+  {
+    id: "adidas-4dfwd-parley-2",
+    badge: "New",
+    title: "ADIDAS 4DFWD X PARLEY RUNNING SHOES",
+    price: 125,
+    imageSrc: assets.Shoes,
+  },
+  {
+    id: "adidas-4dfwd-parley-3",
+    badge: "New",
+    title: "ADIDAS 4DFWD X PARLEY RUNNING SHOES",
+    price: 125,
+    imageSrc: assets.Shoes,
+  },
+  {
+    id: "adidas-4dfwd-parley-4",
+    badge: "New",
+    title: "ADIDAS 4DFWD X PARLEY RUNNING SHOES",
+    price: 125,
+    imageSrc: assets.Shoes,
   },
 ];

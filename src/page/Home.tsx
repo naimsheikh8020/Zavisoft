@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { assets, reviews } from "../assets/assets";
+import { assets, products, reviews } from "../assets/assets";
 import Button from "../Components/Button";
 import ReviewCard from "../Components/ReviewCard";
 import ProductCard from "../Components/ProductCard";
@@ -84,26 +84,14 @@ const Home = () => {
 
 
         </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
-              <ProductCard
-  title="ADIDAS 4DFWD X PARLEY RUNNING SHOES"
-  imageSrc={assets.Shoes}
-  price={125}
-  badge = "NEw"
-/>
-         <ProductCard
-  title="ADIDAS 4DFWD X PARLEY RUNNING SHOES"
-  imageSrc={assets.Shoes}
-  price={125}
-  badge = "NEw"
-/>
-         <ProductCard
-  title="ADIDAS 4DFWD X PARLEY RUNNING SHOES"
-  imageSrc={assets.Shoes}
-  price={125}
-  badge = "NEw"
-/>
-      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+  {products.map((product) => (
+    <ProductCard
+      key={product.id}
+      {...product}
+    />
+  ))}
+</div>
   </div>
 
       {/* Review Section */}
