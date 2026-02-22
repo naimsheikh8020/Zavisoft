@@ -211,21 +211,18 @@ const ProductDetails = () => {
       </div>
 
       <div>
-        <div className="flex justify-between items-center">
-          <div>
-          <h2 className="text-5xl font-bold mt-12">You may also like</h2>
+        <div className="flex justify-between items-center mt-12">
+          <h2 className="text-2xl md:text-5xl font-bold">You may also like</h2>
+          <div className="flex gap-2 md:gap-4">
+            <button className="w-8 h-8 md:w-10 md:h-10 rounded-md bg-gray-400 text-white flex items-center justify-center">
+              ‹
+            </button>
+            <button className="w-8 h-8 md:w-10 md:h-10 rounded-md bg-black text-white flex items-center justify-center">
+              ›
+            </button>
+          </div>
         </div>
-        <div className="flex gap-4">
-          <button className="w-10 h-10 rounded-md bg-gray-400 text-white flex items-center justify-center">
-            ‹
-          </button>
-          <button className="w-10 h-10 rounded-md bg-black text-white flex items-center justify-center">
-            ›
-          </button>
-
-        </div>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4">
           {products.map((product) => (
             <ProductCard
               key={product.id}
