@@ -1,15 +1,9 @@
 import React from "react";
 import { Link } from "react-router";
 import Button from "./Button";
+import type { ProductCardProps } from "../types/ProductType";
 
-interface ProductCardProps {
-  id: string;
-  badge?: string;
-  imageSrc: string;
-  imageAlt?: string;
-  title: string;
-  price: number;
-}
+
 
 const ProductCard: React.FC<ProductCardProps> = ({
   id,
@@ -23,7 +17,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
     <div className="w-full">
 
       {/* Image Frame */}
-      <div className="bg-[#e5e5e5] p-4 rounded-4xl">
+      <div className=" p-4 rounded-4xl">
         <div className="bg-white p-2 rounded-4xl">
           <div className="relative bg-[#ECEEF0] rounded-4xl p-4 flex items-center justify-center overflow-hidden">
 

@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { assets, products, reviews } from "../assets/assets";
+import { assets, reviews } from "../assets/assets";
 import Button from "../Components/Button";
 import ReviewCard from "../Components/ReviewCard";
 import ProductCard from "../Components/ProductCard";
 import CategorySection from "../Components/CategorySection";
+import { useProducts } from "../hook/useProducts";
 
 const Home = () => {
+  const { products, loading, error } = useProducts();
   const images = [assets.HeroImg1, assets.HeroImg2, assets.HeroImg3];
   const [activeImage, setActiveImage] = useState(images[0]);
 
@@ -57,8 +59,8 @@ const Home = () => {
                 key={index}
                 onClick={() => setActiveImage(img)}
                 className={`rounded-xl overflow-hidden border-2 transition ${activeImage === img
-                    ? "border-white"
-                    : "border-transparent opacity-70"
+                  ? "border-white"
+                  : "border-transparent opacity-70"
                   }`}
               >
                 <img
@@ -76,7 +78,7 @@ const Home = () => {
       <div className="mt-8">
         <div className="flex items-center justify-between">
           <h2 className="text-3xl  md:text-6xl font-semibold uppercase">
-            Don’t miss out <br/> new drops
+            Don’t miss out <br /> new drops
           </h2>
           <Button variant="primary" size="md" className="shrink-0">
             Shop New DROPS
@@ -85,18 +87,34 @@ const Home = () => {
 
 
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {products.map((product) => (
-            <ProductCard
-              key={product.id}
-              {...product}
-            />
-          ))}
-</div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
+          {loading && (
+            <div className="col-span-full text-center py-12">
+              <p className="text-xl text-gray-600">Loading products...</p>
+            </div>
+          )}
+          {error && (
+            <div className="col-span-full text-center py-12">
+              <p className="text-xl text-red-600">Error: {error}</p>
+            </div>
+          )}
+          {!loading && !error &&
+  products.map((product) => (
+    <ProductCard
+      key={product.id}
+      id={product.id.toString()}
+      title={product.title}
+      price={product.price}
+      imageSrc={product.images?.[0] || "/fallback.jpg"}
+      imageAlt={product.title}
+      badge="New"
+    />
+  ))}
+        </div>
       </div>
 
       {/* Categroy Section */}
-      <CategorySection/>
+      <CategorySection />
 
       {/* Review Section */}
       <div>
