@@ -10,9 +10,10 @@ const Layout = () => {
       <div className="flex-1 px-4 md:px-8 lg:px-16 py-4 md:py-6">
         <Navbar />
         <Outlet />
+        
       </div>
-
-      <Footer />
+<Footer />
+     
     </div>
   );
 };

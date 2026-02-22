@@ -13,7 +13,13 @@ import Avetar1 from "./Avetar1.png"
 import Avetar2 from "./Aveter2.png"
 import Avetar3 from "./Aveter3.png"
 import type { Review } from "../types/ReviewCardPropos"
-
+import Kicks from "./Kicks.svg"
+import k from "./k.svg"
+import k1 from "./k1.svg"
+import i from "./i.svg"
+import c from "./c.svg"
+import s from "./s.svg"
+import kicksfooterlog from "./kicksfooter.svg"
 export const assets = {
   Logo,
   Logoo,
@@ -29,6 +35,13 @@ export const assets = {
   Avetar1,
   Avetar2,
   Avetar3,
+  Kicks,
+  k,
+  k1,
+  i,
+  c,
+  s,
+  kicksfooterlog
 }
 
 
