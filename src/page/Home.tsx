@@ -2,6 +2,7 @@ import { useState } from "react";
 import { assets, reviews } from "../assets/assets";
 import Button from "../Components/Button";
 import ReviewCard from "../Components/ReviewCard";
+import ProductCard from "../Components/ProductCard";
 
 const Home = () => {
   const images = [assets.HeroImg1, assets.HeroImg2, assets.HeroImg3];
@@ -71,19 +72,39 @@ const Home = () => {
       </div>
 
       {/* Shop New Section */}
-
-      <div>
+      <div className="mt-8">
         <div className="flex items-center justify-between">
-          <h2 className="text-3xl  md:text-6xl font-bold uppercase">
-            Don’t miss out new drops
+          <h2 className="text-3xl  md:text-6xl font-semibold uppercase">
+            Don’t miss out <br/> new drops
           </h2>
           <Button variant="primary" size="md" className="shrink-0">
             Shop New DROPS
           </Button>
-        </div>
 
-        
+
+
+        </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
+              <ProductCard
+  title="ADIDAS 4DFWD X PARLEY RUNNING SHOES"
+  imageSrc={assets.Shoes}
+  price={125}
+  badge = "NEw"
+/>
+         <ProductCard
+  title="ADIDAS 4DFWD X PARLEY RUNNING SHOES"
+  imageSrc={assets.Shoes}
+  price={125}
+  badge = "NEw"
+/>
+         <ProductCard
+  title="ADIDAS 4DFWD X PARLEY RUNNING SHOES"
+  imageSrc={assets.Shoes}
+  price={125}
+  badge = "NEw"
+/>
       </div>
+  </div>
 
       {/* Review Section */}
       <div>
