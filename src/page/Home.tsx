@@ -54,11 +54,10 @@ const Home = () => {
               <button
                 key={index}
                 onClick={() => setActiveImage(img)}
-                className={`rounded-xl overflow-hidden border-2 transition ${
-                  activeImage === img
+                className={`rounded-xl overflow-hidden border-2 transition ${activeImage === img
                     ? "border-white"
                     : "border-transparent opacity-70"
-                }`}
+                  }`}
               >
                 <img
                   src={img}
@@ -71,23 +70,38 @@ const Home = () => {
         </div>
       </div>
 
+      {/* Shop New Section */}
+
+      <div>
+        <div className="flex items-center justify-between">
+          <h2 className="text-3xl  md:text-6xl font-bold uppercase">
+            Don’t miss out new drops
+          </h2>
+          <Button variant="primary" size="md" className="shrink-0">
+            Shop New DROPS
+          </Button>
+        </div>
+
+        
+      </div>
+
       {/* Review Section */}
       <div>
         <div className="flex items-center justify-between gap-3">
-        <h2 className="text-3xl md:text-6xl uppercase font-bold flex-1 min-w-0">
-          Reviews
-        </h2>
+          <h2 className="text-3xl md:text-6xl uppercase font-bold flex-1 min-w-0">
+            Reviews
+          </h2>
 
-        <Button variant="primary" size="md" className="shrink-0">
-          Shop Now
-        </Button>
-      </div>
-       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-      {reviews.map((review) => (
-        <ReviewCard key={review.id} {...review} />
-      ))}
-    </div>
-      
+          <Button variant="primary" size="md" className="shrink-0">
+            Shop Now
+          </Button>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+          {reviews.map((review) => (
+            <ReviewCard key={review.id} {...review} />
+          ))}
+        </div>
+
       </div>
     </section>
   );
