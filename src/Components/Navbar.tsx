@@ -1,6 +1,7 @@
 import { Search, User, ShoppingBag, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { assets } from "../assets/assets";
+import { Link } from "react-router";
 
 const NAV_ITEMS = ["New Drops 🔥", "Men", "Women"];
 
@@ -32,11 +33,13 @@ export default function Navbar() {
           </ul>
 
           {/* Logo */}
-          <img
-            src={assets.Logoo}
-            alt="Brand logo"
-            className="h-6 md:h-8 w-auto"
-          />
+          <Link to="/">
+            <img
+              src={assets.Logoo}
+              alt="Brand logo"
+              className="h-6 md:h-8 w-auto"
+            />
+          </Link>
 
           {/* Icons */}
           <div className="flex items-center gap-4 text-gray-800">
