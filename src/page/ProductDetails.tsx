@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import { assets, products } from "../assets/assets";
 import { useState } from "react";
 import { Heart } from "lucide-react";
+import ProductCard from "../Components/ProductCard";
 
 const sizes = [38, 39, 40, 41, 42, 43, 44, 45, 46, 47];
 
@@ -29,9 +30,8 @@ const ProductDetails = () => {
   }
 
   return (
-    <section className="max-w-[1400px] mx-auto px-6 py-12">
+    <section className="max-w-full mx-auto px-6 py-12">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-
         {/* LEFT - IMAGE SECTION */}
         <>
           {/* Mobile Layout */}
@@ -50,9 +50,8 @@ const ProductDetails = () => {
                 <button
                   key={index}
                   onClick={() => setActiveImage(img)}
-                  className={`w-2 h-2 rounded-full transition ${
-                    activeImage === img ? "bg-blue-600" : "bg-gray-300"
-                  }`}
+                  className={`w-2 h-2 rounded-full transition ${activeImage === img ? "bg-blue-600" : "bg-gray-300"
+                    }`}
                 />
               ))}
             </div>
@@ -63,11 +62,10 @@ const ProductDetails = () => {
                 <button
                   key={index}
                   onClick={() => setActiveImage(img)}
-                  className={`w-20 h-16 rounded-xl bg-gray-100 p-1 transition border ${
-                    activeImage === img
+                  className={`w-20 h-16 rounded-xl bg-gray-100 p-1 transition border ${activeImage === img
                       ? "border-black"
                       : "border-transparent"
-                  }`}
+                    }`}
                 >
                   <img
                     src={img}
@@ -78,7 +76,7 @@ const ProductDetails = () => {
             </div>
           </div>
 
-          {/* Desktop Grid (UNCHANGED) */}
+          {/* Desktop Grid */}
           <div className="hidden lg:grid grid-cols-2 gap-3">
             <div className="rounded-3xl">
               <img
@@ -112,7 +110,6 @@ const ProductDetails = () => {
 
         {/* RIGHT - PRODUCT DETAILS */}
         <div className="flex flex-col">
-
           <span className="bg-blue-600 text-white text-sm font-medium px-4 py-1 rounded-full w-fit mb-4">
             New Release
           </span>
@@ -127,30 +124,30 @@ const ProductDetails = () => {
 
           {/* COLOR */}
           <div className="mb-6">
-  <p className="text-sm font-semibold mb-3">COLOR</p>
+            <p className="text-sm font-semibold mb-3">COLOR</p>
 
-  <div className="flex gap-3">
-    {/* Navy */}
-    <button
-      onClick={() => setSelectedColor("navy")}
-      className={`w-11 h-11 rounded-full flex items-center justify-center transition
-        ${selectedColor === "navy" ? "ring-2 ring-black p-[3px]" : ""}
-      `}
-    >
-      <div className="w-full h-full rounded-full bg-[#1f2a3c]" />
-    </button>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setSelectedColor("navy")}
+                className={`w-11 h-11 rounded-full flex items-center justify-center transition ${selectedColor === "navy"
+                    ? "ring-2 ring-black p-[3px]"
+                    : ""
+                  }`}
+              >
+                <div className="w-full h-full rounded-full bg-[#1f2a3c]" />
+              </button>
 
-    {/* Green */}
-    <button
-      onClick={() => setSelectedColor("green")}
-      className={`w-11 h-11 rounded-full flex items-center justify-center transition
-        ${selectedColor === "green" ? "ring-2 ring-black p-[3px]" : ""}
-      `}
-    >
-      <div className="w-full h-full rounded-full bg-[#7f8f7a]" />
-    </button>
-  </div>
-</div>
+              <button
+                onClick={() => setSelectedColor("green")}
+                className={`w-11 h-11 rounded-full flex items-center justify-center transition ${selectedColor === "green"
+                    ? "ring-2 ring-black p-[3px]"
+                    : ""
+                  }`}
+              >
+                <div className="w-full h-full rounded-full bg-[#7f8f7a]" />
+              </button>
+            </div>
+          </div>
 
           {/* SIZE */}
           <div className="mb-8">
@@ -166,11 +163,10 @@ const ProductDetails = () => {
                 <button
                   key={size}
                   onClick={() => setSelectedSize(size)}
-                  className={`w-12 h-10 rounded-lg text-sm font-medium border ${
-                    selectedSize === size
+                  className={`w-12 h-10 rounded-lg text-sm font-medium border ${selectedSize === size
                       ? "bg-black text-white border-black"
                       : "bg-white border-gray-300 hover:border-black"
-                  }`}
+                    }`}
                 >
                   {size}
                 </button>
@@ -196,6 +192,7 @@ const ProductDetails = () => {
           {/* ABOUT */}
           <div>
             <h3 className="font-semibold mb-4">ABOUT THE PRODUCT</h3>
+
             <p className="text-sm text-gray-600 mb-4">
               Shadow Navy / Army Green
             </p>
@@ -209,7 +206,32 @@ const ProductDetails = () => {
               <li>Free standard shipping, returns & exchanges.</li>
             </ul>
           </div>
+        </div>
 
+      </div>
+
+      <div>
+        <div className="flex justify-between items-center">
+          <div>
+          <h2 className="text-5xl font-bold mt-12">You may also like</h2>
+        </div>
+        <div className="flex gap-4">
+          <button className="w-10 h-10 rounded-md bg-gray-400 text-white flex items-center justify-center">
+            ‹
+          </button>
+          <button className="w-10 h-10 rounded-md bg-black text-white flex items-center justify-center">
+            ›
+          </button>
+
+        </div>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {products.map((product) => (
+            <ProductCard
+              key={product.id}
+              {...product}
+            />
+          ))}
         </div>
       </div>
     </section>
