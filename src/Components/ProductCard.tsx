@@ -40,7 +40,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
       {/* Content */}
       <div className="mt-6">
-        <h3 className="text-2xl font-bold uppercase leading-tight tracking-wide text-black">
+        <h3 className="text-2xl font-bold uppercase leading-tight tracking-wide text-black min-h-[64px] line-clamp-2">
           {title}
         </h3>
 
