@@ -98,7 +98,7 @@ const ProductDetails = () => {
               <img
                 src={activeImage}
                 alt={product.title}
-                className="w-full object-contain"
+                className="w-full h-80 object-contain"
               />
             </div>
 
@@ -128,7 +128,7 @@ const ProductDetails = () => {
                   <img
                     src={img}
                     alt={`${product.title} view ${index + 1}`}
-                    className="w-full h-full object-contain"
+                    className="w-full h-12 object-contain"
                   />
                 </button>
               ))}
@@ -142,14 +142,14 @@ const ProductDetails = () => {
                 <img
                   src={img}
                   alt={`${product.title} view ${index + 1}`}
-                  className="w-full object-contain"
+                  className="w-full h-64 object-contain"
                 />
               </div>
             ))}
             {/* Fill empty slots if less than 4 images */}
             {[...Array(Math.max(0, 4 - product.images.length))].map((_, index) => (
               <div key={`empty-${index}`} className="rounded-3xl bg-gray-100 p-4">
-                <div className="w-full h-full flex items-center justify-center text-gray-400">
+                <div className="w-full h-64 flex items-center justify-center text-gray-400">
                   No image
                 </div>
               </div>
@@ -228,8 +228,8 @@ const ProductDetails = () => {
             <button
               onClick={handleAddToCart}
               className={`flex-1 py-4 rounded-xl font-semibold tracking-wide transition-all ${addedToCart
-                  ? 'bg-green-600 text-white'
-                  : 'bg-black text-white hover:bg-gray-800'
+                ? 'bg-green-600 text-white'
+                : 'bg-black text-white hover:bg-gray-800'
                 }`}
             >
               {addedToCart ? ' ADDED TO CART' : 'ADD TO CART'}
