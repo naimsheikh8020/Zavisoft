@@ -4,11 +4,13 @@ import { Heart } from "lucide-react";
 import ProductCard from "../Components/ProductCard";
 import { getProductById, getProducts } from "../service/product.service";
 import type { Product } from "../types/ProductType";
+import { useCart } from "../context/CartContext";
 
 const sizes = [38, 39, 40, 41, 42, 43, 44, 45, 46, 47];
 
 const ProductDetails = () => {
   const { id } = useParams<{ id: string }>();
+  const { addToCart } = useCart();
   const [product, setProduct] = useState<Product | null>(null);
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -17,6 +19,19 @@ const ProductDetails = () => {
   const [activeImage, setActiveImage] = useState("");
   const [selectedSize, setSelectedSize] = useState<number | null>(38);
   const [selectedColor, setSelectedColor] = useState("navy");
+  const [addedToCart, setAddedToCart] = useState(false);
+
+  const handleAddToCart = () => {
+    if (!product) return;
+
+    addToCart(product, 1, selectedSize || undefined, selectedColor);
+    setAddedToCart(true);
+
+    // Reset the success message after 2 seconds
+    setTimeout(() => {
+      setAddedToCart(false);
+    }, 2000);
+  };
 
   useEffect(() => {
     // Scroll to top when navigating to product details page
@@ -212,11 +227,17 @@ const ProductDetails = () => {
 
           {/* BUTTONS */}
           <div className="flex gap-4 mb-8">
-            <button className="flex-1 bg-black text-white py-4 rounded-xl font-semibold tracking-wide">
-              ADD TO CART
+            <button
+              onClick={handleAddToCart}
+              className={`flex-1 py-4 rounded-xl font-semibold tracking-wide transition-all ${addedToCart
+                  ? 'bg-green-600 text-white'
+                  : 'bg-black text-white hover:bg-gray-800'
+                }`}
+            >
+              {addedToCart ? '✓ ADDED TO CART' : 'ADD TO CART'}
             </button>
 
-            <button className="w-14 flex items-center justify-center rounded-xl bg-black">
+            <button className="w-14 flex items-center justify-center rounded-xl bg-black hover:bg-gray-800 transition">
               <Heart className="text-white" size={20} />
             </button>
           </div>

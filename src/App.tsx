@@ -2,14 +2,17 @@
 import { BrowserRouter } from 'react-router'
 import './App.css'
 import Router from './Router/Router'
+import { CartProvider } from './context/CartContext'
 
 function App() {
 
   return (
     <>
-    <BrowserRouter>
-      <Router/>
-    </BrowserRouter>
+      <BrowserRouter>
+        <CartProvider>
+          <Router />
+        </CartProvider>
+      </BrowserRouter>
     </>
   )
 }

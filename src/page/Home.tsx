@@ -78,7 +78,7 @@ const Home = () => {
       {/* Shop New Section */}
       <div className="mt-8">
         <div className="flex items-center justify-between">
-          <h2 className="text-3xl  md:text-6xl font-semibold uppercase">
+          <h2 className="text-xl  md:text-6xl font-semibold uppercase">
             Don’t miss out <br /> new drops
           </h2>
           <Button variant="primary" size="md" className="shrink-0">
