@@ -44,12 +44,10 @@ const ProductDetails = () => {
         setLoading(true);
         setError(null);
 
-        // Fetch product details
         const productData = await getProductById(Number(id));
         setProduct(productData);
         setActiveImage(productData.images[0] || "");
 
-        // Fetch related products
         const allProducts = await getProducts();
         const related = allProducts
           .filter(p => p.category.id === productData.category.id && p.id !== productData.id)
@@ -234,7 +232,7 @@ const ProductDetails = () => {
                   : 'bg-black text-white hover:bg-gray-800'
                 }`}
             >
-              {addedToCart ? '✓ ADDED TO CART' : 'ADD TO CART'}
+              {addedToCart ? ' ADDED TO CART' : 'ADD TO CART'}
             </button>
 
             <button className="w-14 flex items-center justify-center rounded-xl bg-black hover:bg-gray-800 transition">
