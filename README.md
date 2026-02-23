@@ -2,7 +2,7 @@
 
 A modern, responsive e-commerce web application built with React, TypeScript, and Tailwind CSS. Features a full shopping cart system, product browsing, dynamic categories, and smooth animations.
 
-🔗 **Live Demo:** [https://zavisoft1.netlify.app/](https://zavisoft1.netlify.app/)
+🔗 **Live Demo:** [https://zavisoft1.netlify.app/](zavisoft-gilt.vercel.app)
 
 ---
 
