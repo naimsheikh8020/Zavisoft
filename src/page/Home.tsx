@@ -90,7 +90,7 @@ const Home = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
           {loading && (
-            <Loading size={35}/>
+            <Loading size={35} />
 
           )}
           {error && (
@@ -99,17 +99,17 @@ const Home = () => {
             </div>
           )}
           {!loading && !error &&
-  products.map((product) => (
-    <ProductCard
-      key={product.id}
-      id={product.id.toString()}
-      title={product.title}
-      price={product.price}
-      imageSrc={product.images?.[0] || "/fallback.jpg"}
-      imageAlt={product.title}
-      badge="New"
-    />
-  ))}
+            products.map((product) => (
+              <ProductCard
+                key={product.id}
+                id={product.id.toString()}
+                title={product.title}
+                price={product.price}
+                imageSrc={product.images?.[0] || "https://placehold.co/600x400"}
+                imageAlt={product.title}
+                badge="New"
+              />
+            ))}
         </div>
       </div>
 

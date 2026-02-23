@@ -32,6 +32,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             <img
               src={imageSrc}
               alt={imageAlt}
+              className="w-full h-48 object-cover"
             />
 
           </div>
