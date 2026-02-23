@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { getCategories } from "../service/product.service";
 import type { Category } from "../types/ProductType";
+import { Loading } from "./Loading";
 
 const CategorySection = () => {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -60,13 +61,7 @@ const CategorySection = () => {
 
   if (loading) {
     return (
-      <section className="bg-black rounded-xl w-full py-20">
-        <div className="w-full mx-auto px-6 lg:px-12">
-          <div className="flex items-center justify-center h-60">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
-          </div>
-        </div>
-      </section>
+      <Loading size={35}/>
     );
   }
 
