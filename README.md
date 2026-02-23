@@ -2,13 +2,13 @@
 
 A modern, responsive e-commerce web application built with React, TypeScript, and Tailwind CSS. Features a full shopping cart system, product browsing, dynamic categories, and smooth animations.
 
-🔗 **Live Demo:** [https://zavisoft1.netlify.app/](https://zavisoft1.netlify.app/)
+
 
 ---
 
 ## 📋 Overview
 
-Zavisoft is a fully functional e-commerce platform that allows users to browse products, view detailed product information, add items to their cart, and manage their shopping experience. The application integrates with a REST API to fetch real-time product data and categories, providing a dynamic shopping experience.
+fully functional e-commerce platform that allows users to browse products, view detailed product information, add items to their cart, and manage their shopping experience. The application integrates with a REST API to fetch real-time product data and categories, providing a dynamic shopping experience.
 
 ### Key Features
 
@@ -241,19 +241,7 @@ Zavisoft/
 - ✅ Smooth animations and transitions
 - ✅ Error handling for API calls
 
-### Future Enhancements
-- 🔄 User authentication and profiles
-- 🔄 Product search and advanced filtering
-- 🔄 Wishlist/favorites functionality
-- 🔄 Checkout and payment integration
-- 🔄 Order history and tracking
-- 🔄 Product reviews submission
-- 🔄 Backend integration for cart persistence
-- 🔄 Image zoom on product details
-- 🔄 Extract carousel logic into reusable `useCarousel` hook
-- 🔄 Add loading skeletons for better UX
-- 🔄 Implement error boundary components
-- 🔄 Add unit and integration tests
+
 
 ### Known Considerations
 - Cart data is stored in React state (not persisted to backend/localStorage)
@@ -302,6 +290,6 @@ This project is private and proprietary.
 
 For questions or support, please contact the development team.
 
+
 ---
 
-**Built with ❤️ by Zavisoft Team**
