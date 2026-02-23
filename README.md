@@ -8,7 +8,7 @@ A modern, responsive e-commerce web application built with React, TypeScript, an
 
 ## 📋 Overview
 
-Zavisoft is a fully functional e-commerce platform that allows users to browse products, view detailed product information, add items to their cart, and manage their shopping experience. The application integrates with a REST API to fetch real-time product data and categories, providing a dynamic shopping experience.
+fully functional e-commerce platform that allows users to browse products, view detailed product information, add items to their cart, and manage their shopping experience. The application integrates with a REST API to fetch real-time product data and categories, providing a dynamic shopping experience.
 
 ### Key Features
 
