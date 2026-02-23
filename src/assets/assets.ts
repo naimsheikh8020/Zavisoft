@@ -86,33 +86,3 @@ export const reviews: Review[] = [
 
 
 
-export const products: Product[] = [
-  {
-    id: "adidas-4dfwd-parley-1",
-    badge: "New",
-    title: "ADIDAS 4DFWD X PARLEY RUNNING SHOES",
-    price: 125,
-    imageSrc: assets.Shoes,
-  },
-  {
-    id: "adidas-4dfwd-parley-2",
-    badge: "New",
-    title: "ADIDAS 4DFWD X PARLEY RUNNING SHOES",
-    price: 125,
-    imageSrc: assets.Shoes,
-  },
-  {
-    id: "adidas-4dfwd-parley-3",
-    badge: "New",
-    title: "ADIDAS 4DFWD X PARLEY RUNNING SHOES",
-    price: 125,
-    imageSrc: assets.Shoes,
-  },
-  {
-    id: "adidas-4dfwd-parley-4",
-    badge: "New",
-    title: "ADIDAS 4DFWD X PARLEY RUNNING SHOES",
-    price: 125,
-    imageSrc: assets.Shoes,
-  },
-];
