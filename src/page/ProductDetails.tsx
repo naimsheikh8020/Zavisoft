@@ -1,30 +1,71 @@
 import { useParams } from "react-router";
-import { assets, products } from "../assets/assets";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Heart } from "lucide-react";
 import ProductCard from "../Components/ProductCard";
+import { getProductById, getProducts } from "../service/product.service";
+import type { Product } from "../types/ProductType";
 
 const sizes = [38, 39, 40, 41, 42, 43, 44, 45, 46, 47];
 
 const ProductDetails = () => {
   const { id } = useParams<{ id: string }>();
-  const product = products.find((p) => p.id === id);
+  const [product, setProduct] = useState<Product | null>(null);
+  const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const productImages = [
-    assets.productDetails1,
-    assets.productDetails2,
-    assets.productDetails3,
-    assets.productDetails4,
-  ];
-
-  const [activeImage, setActiveImage] = useState(productImages[0]);
+  const [activeImage, setActiveImage] = useState("");
   const [selectedSize, setSelectedSize] = useState<number | null>(38);
   const [selectedColor, setSelectedColor] = useState("navy");
 
-  if (!product) {
+  useEffect(() => {
+    const fetchProductData = async () => {
+      if (!id) return;
+
+      try {
+        setLoading(true);
+        setError(null);
+
+        // Fetch product details
+        const productData = await getProductById(Number(id));
+        setProduct(productData);
+        setActiveImage(productData.images[0] || "");
+
+        // Fetch related products
+        const allProducts = await getProducts();
+        const related = allProducts
+          .filter(p => p.category.id === productData.category.id && p.id !== productData.id)
+          .slice(0, 4);
+        setRelatedProducts(related);
+      } catch (err) {
+        setError("Failed to load product details");
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProductData();
+  }, [id]);
+
+  if (loading) {
     return (
-      <div className="text-center mt-20 text-2xl font-semibold">
-        Product not found
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-xl font-semibold">Loading product...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !product) {
+    return (
+      <div className="text-center mt-20">
+        <p className="text-2xl font-semibold text-red-600 mb-4">
+          {error || "Product not found"}
+        </p>
+        <a href="/" className="text-blue-600 underline">Return to home</a>
       </div>
     );
   }
@@ -40,13 +81,14 @@ const ProductDetails = () => {
             <div className="bg-gray-100 rounded-3xl p-4">
               <img
                 src={activeImage}
+                alt={product.title}
                 className="w-full object-contain"
               />
             </div>
 
             {/* Dots */}
             <div className="flex justify-center gap-2 mt-3">
-              {productImages.map((img, index) => (
+              {product.images.map((img, index) => (
                 <button
                   key={index}
                   onClick={() => setActiveImage(img)}
@@ -58,17 +100,18 @@ const ProductDetails = () => {
 
             {/* Thumbnails */}
             <div className="flex gap-3 mt-4 justify-center">
-              {productImages.map((img, index) => (
+              {product.images.map((img, index) => (
                 <button
                   key={index}
                   onClick={() => setActiveImage(img)}
                   className={`w-20 h-16 rounded-xl bg-gray-100 p-1 transition border ${activeImage === img
-                      ? "border-black"
-                      : "border-transparent"
+                    ? "border-black"
+                    : "border-transparent"
                     }`}
                 >
                   <img
                     src={img}
+                    alt={`${product.title} view ${index + 1}`}
                     className="w-full h-full object-contain"
                   />
                 </button>
@@ -78,48 +121,38 @@ const ProductDetails = () => {
 
           {/* Desktop Grid */}
           <div className="hidden lg:grid grid-cols-2 gap-3">
-            <div className="rounded-3xl">
-              <img
-                src={assets.productDetails1}
-                className="w-full object-contain"
-              />
-            </div>
-
-            <div className="rounded-3xl">
-              <img
-                src={assets.productDetails2}
-                className="w-full object-contain"
-              />
-            </div>
-
-            <div className="rounded-3xl border-black">
-              <img
-                src={assets.productDetails3}
-                className="w-full object-contain"
-              />
-            </div>
-
-            <div className="rounded-3xl">
-              <img
-                src={assets.productDetails4}
-                className="w-full object-contain"
-              />
-            </div>
+            {product.images.slice(0, 4).map((img, index) => (
+              <div key={index} className="rounded-3xl bg-gray-100 p-4 cursor-pointer hover:opacity-80 transition" onClick={() => setActiveImage(img)}>
+                <img
+                  src={img}
+                  alt={`${product.title} view ${index + 1}`}
+                  className="w-full object-contain"
+                />
+              </div>
+            ))}
+            {/* Fill empty slots if less than 4 images */}
+            {[...Array(Math.max(0, 4 - product.images.length))].map((_, index) => (
+              <div key={`empty-${index}`} className="rounded-3xl bg-gray-100 p-4">
+                <div className="w-full h-full flex items-center justify-center text-gray-400">
+                  No image
+                </div>
+              </div>
+            ))}
           </div>
         </>
 
         {/* RIGHT - PRODUCT DETAILS */}
         <div className="flex flex-col">
           <span className="bg-blue-600 text-white text-sm font-medium px-4 py-1 rounded-full w-fit mb-4">
-            New Release
+            {product.category.name}
           </span>
 
           <h1 className="text-3xl font-bold leading-tight mb-4 uppercase">
-            ADIDAS 4DFWD X PARLEY RUNNING SHOES
+            {product.title}
           </h1>
 
           <p className="text-xl text-blue-600 font-semibold mb-6">
-            $125.00
+            ${product.price.toFixed(2)}
           </p>
 
           {/* COLOR */}
@@ -130,8 +163,8 @@ const ProductDetails = () => {
               <button
                 onClick={() => setSelectedColor("navy")}
                 className={`w-11 h-11 rounded-full flex items-center justify-center transition ${selectedColor === "navy"
-                    ? "ring-2 ring-black p-[3px]"
-                    : ""
+                  ? "ring-2 ring-black p-[3px]"
+                  : ""
                   }`}
               >
                 <div className="w-full h-full rounded-full bg-[#1f2a3c]" />
@@ -140,8 +173,8 @@ const ProductDetails = () => {
               <button
                 onClick={() => setSelectedColor("green")}
                 className={`w-11 h-11 rounded-full flex items-center justify-center transition ${selectedColor === "green"
-                    ? "ring-2 ring-black p-[3px]"
-                    : ""
+                  ? "ring-2 ring-black p-[3px]"
+                  : ""
                   }`}
               >
                 <div className="w-full h-full rounded-full bg-[#7f8f7a]" />
@@ -164,8 +197,8 @@ const ProductDetails = () => {
                   key={size}
                   onClick={() => setSelectedSize(size)}
                   className={`w-12 h-10 rounded-lg text-sm font-medium border ${selectedSize === size
-                      ? "bg-black text-white border-black"
-                      : "bg-white border-gray-300 hover:border-black"
+                    ? "bg-black text-white border-black"
+                    : "bg-white border-gray-300 hover:border-black"
                     }`}
                 >
                   {size}
@@ -194,11 +227,7 @@ const ProductDetails = () => {
             <h3 className="font-semibold mb-4">ABOUT THE PRODUCT</h3>
 
             <p className="text-sm text-gray-600 mb-4">
-              Shadow Navy / Army Green
-            </p>
-
-            <p className="text-sm text-gray-500 mb-4">
-              This product is excluded from all promotional discounts and offers.
+              {product.description}
             </p>
 
             <ul className="text-sm text-gray-500 list-disc pl-5 space-y-2">
@@ -223,10 +252,14 @@ const ProductDetails = () => {
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4">
-          {products.map((product) => (
+          {relatedProducts.map((relatedProduct) => (
             <ProductCard
-              key={product.id}
-              {...product}
+              key={relatedProduct.id}
+              id={relatedProduct.id.toString()}
+              imageSrc={relatedProduct.images[0] || ""}
+              title={relatedProduct.title}
+              price={relatedProduct.price}
+              badge={relatedProduct.category.name}
             />
           ))}
         </div>
