@@ -25,7 +25,6 @@ import productDetails1 from "./ProductDetails1.png"
 import productDetails2 from "./ProductDetails2.png"
 import productDetails3 from "./ProductDetails3.png"
 import productDetails4 from "./ProductDetails4.png"
-import type { Product } from "../types/ProductType"
 export const assets = {
   Logo,
   Logoo,
