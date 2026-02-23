@@ -19,6 +19,9 @@ const ProductDetails = () => {
   const [selectedColor, setSelectedColor] = useState("navy");
 
   useEffect(() => {
+    // Scroll to top when navigating to product details page
+    window.scrollTo(0, 0);
+
     const fetchProductData = async () => {
       if (!id) return;
 

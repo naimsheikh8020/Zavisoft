@@ -5,6 +5,7 @@ import ReviewCard from "../Components/ReviewCard";
 import ProductCard from "../Components/ProductCard";
 import CategorySection from "../Components/CategorySection";
 import { useProducts } from "../hook/useProducts";
+import { Loading } from "../Components/Loading";
 
 const Home = () => {
   const { products, loading, error } = useProducts();
@@ -89,9 +90,8 @@ const Home = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
           {loading && (
-            <div className="col-span-full text-center py-12">
-              <p className="text-xl text-gray-600">Loading products...</p>
-            </div>
+            <Loading size={35}/>
+
           )}
           {error && (
             <div className="col-span-full text-center py-12">
